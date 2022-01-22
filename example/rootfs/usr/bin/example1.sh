@@ -7,7 +7,7 @@ main() {
     bashio::log.info "Starting MochaD"
 
     mkdir /build
-    cd /build
+    cd /build || exit
     wget -O mochad.tgz http://sourceforge.net/projects/mochad/files/latest/download
     tar -xzvf mochad*.t*
     cd mochad* && ./configure
