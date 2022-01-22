@@ -13,9 +13,11 @@ exec 6<>/dev/tcp/192.168.1.254/1099
 # PL commands and voice prompts, keep track of the device state.
 ds10state="unknown"
 
+# shellcheck disable=SC2162
 while read <&6
 do
     # Show the line on standard output just for debugging.
+    # shellcheck disable=SC2086
     echo $REPLY >&1
     case $REPLY in
         *Rx\ RFSEC\ Addr:\ EF:43:80*alert*)

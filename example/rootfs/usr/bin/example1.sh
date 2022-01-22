@@ -13,9 +13,9 @@ main() {
 #    cd mochad* && ./configure
 #    make
 #    make install
-    #apk --purge del gcc g++ cmake make wget
-    #rm -rf /var/cache/apk/* /lib/apk/db/*
-    cd mochad
+#    apk --purge del gcc g++ cmake make wget
+#    rm -rf /var/cache/apk/* /lib/apk/db/*
+    cd mochad || exit
     mochad -d
 
     bashio::log.info "Done starting MochaD"
