@@ -211,7 +211,7 @@ WARNING: \`$1' is needed, but is $msg.
 	test -z "$file" || exec >$file
 	echo "#! /bin/sh"
 	echo "# Created by GNU Automake missing as a replacement of"
-	echo "#  $ $@"
+	echo "#  $ $*"
 	echo "exit 0"
 	chmod +x $file
 	exit 1
