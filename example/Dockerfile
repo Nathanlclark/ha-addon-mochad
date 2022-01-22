@@ -2,13 +2,16 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:11.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
-# Copy root filesystem
-COPY rootfs /
-
 # Setup base
-RUN apk add --no-cache \
-    coreutils=9.0-r2 \
-    wget=1.21.2-r2
+RUN apk add --update --no-cache gcc g++ cmake make wget libusb-dev && \
+      mkdir /build && cd /build && \
+      wget -O mochad.tgz http://sourceforge.net/projects/mochad/files/latest/download && \
+      tar -xzvf mochad*.t* && \
+      cd mochad* && ./configure && make && make install && \
+      apk --purge del gcc g++ cmake make wget && \
+      rm -rf /var/cache/apk/* /lib/apk/db/*
+
+CMD ["mochad", "-d"]
 
 # Build arguments
 ARG BUILD_ARCH
@@ -26,11 +29,11 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="Franck Nijhof <frenck@addons.community>" \
+    maintainer="Nate Clark <Nathanlclark@gmai.com>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
     org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
-    org.opencontainers.image.authors="Franck Nijhof <frenck@addons.community>" \
+    org.opencontainers.image.authors="Nate Clark>" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://addons.community" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
