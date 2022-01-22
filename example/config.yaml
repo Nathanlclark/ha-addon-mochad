@@ -1,7 +1,7 @@
 ---
 name: Mochad Daemon
 version: dev
-slug: mochad-daemon
+slug: example
 description: Mochad Daemon add-on by Community Home Assistant Add-ons
 url: https://github.com/Nathanlclark/ha-addon-mochad
 init: false
@@ -16,4 +16,4 @@ options:
   device_bus_path: /dev/bus/usb/002
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)
-  device_bus_path: int(1,120)
+  device_bus_path: str
