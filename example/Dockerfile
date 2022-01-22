@@ -6,7 +6,7 @@ FROM ${BUILD_FROM}
 COPY rootfs /
 
 # Setup base
-RUN apk add --update --no-cache gcc=9.3.0 g++=9.3.0 cmake=3.22 make=4.2.1 wget=1.21.2-r2 libusb-dev=2:0.1.12-32
+RUN apk add --update --no-cache gcc=9.3.0 g++=9.3.0 cmake=3.22 make=4.2.1 wget=1.21.2-r2 libusb=1.0.0-dev
 
 # Build arguments
 ARG BUILD_ARCH
