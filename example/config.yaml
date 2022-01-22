@@ -6,11 +6,11 @@ description: Mochad Daemon add-on by Community Home Assistant Add-ons
 url: https://github.com/Nathanlclark/ha-addon-mochad
 init: false
 arch:
-  - aarch64
+#  - aarch64
   - amd64
-  - armhf
-  - armv7
-  - i386
+#  - armhf
+#  - armv7
+#  - i386
 options:
   log_level: info
   device_bus_path: /dev/bus/usb/002
