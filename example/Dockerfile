@@ -2,6 +2,9 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:11.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
+# Copy root filesystem
+COPY rootfs /
+
 # Setup base
 RUN apk add --update --no-cache gcc g++ cmake make wget libusb-dev && \
       mkdir /build && cd /build && \
